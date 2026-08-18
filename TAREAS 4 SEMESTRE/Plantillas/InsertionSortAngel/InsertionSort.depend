@@ -1,0 +1,55 @@
+# depslib dependency file v1.0
+1758408725 source:c:\users\angel\onedrive\escritorio\4to semestre\estructuras de datos\insertionsort\insertionsort\main.cpp
+	<iostream>
+	"Lista.h"
+
+1758408142 source:c:\users\angel\onedrive\escritorio\4to semestre\estructuras de datos\insertionsort\insertionsort\src\nodo.cpp
+	"Nodo.h"
+
+1758408199 c:\users\angel\onedrive\escritorio\4to semestre\estructuras de datos\insertionsort\insertionsort\include\nodo.h
+	<iostream>
+	<string>
+	<stdlib.h>
+
+1758408697 source:c:\users\angel\onedrive\escritorio\4to semestre\estructuras de datos\insertionsort\insertionsort\src\lista.cpp
+	"Lista.h"
+
+1758408254 c:\users\angel\onedrive\escritorio\4to semestre\estructuras de datos\insertionsort\insertionsort\include\lista.h
+	"Nodo.h"
+
+1758428774 source:c:\users\vmvic\onedrive\desktop\cucei\insertionsortangel\main.cpp
+	<iostream>
+	"Lista.h"
+
+1758408254 c:\users\vmvic\onedrive\desktop\cucei\insertionsortangel\include\lista.h
+	"Nodo.h"
+
+1758408199 c:\users\vmvic\onedrive\desktop\cucei\insertionsortangel\include\nodo.h
+	<iostream>
+	<string>
+	<stdlib.h>
+
+1758428856 source:c:\users\vmvic\onedrive\desktop\cucei\insertionsortangel\src\lista.cpp
+	"Lista.h"
+
+1758408142 source:c:\users\vmvic\onedrive\desktop\cucei\insertionsortangel\src\nodo.cpp
+	"Nodo.h"
+
+1758948397 source:c:\users\vmvic\onedrive\desktop\cucei\tareas 4 semestre\plantillas\insertionsortangel\main.cpp
+	<iostream>
+	"Lista.h"
+
+1758408254 c:\users\vmvic\onedrive\desktop\cucei\tareas 4 semestre\plantillas\insertionsortangel\include\lista.h
+	"Nodo.h"
+
+1758408199 c:\users\vmvic\onedrive\desktop\cucei\tareas 4 semestre\plantillas\insertionsortangel\include\nodo.h
+	<iostream>
+	<string>
+	<stdlib.h>
+
+1758428856 source:c:\users\vmvic\onedrive\desktop\cucei\tareas 4 semestre\plantillas\insertionsortangel\src\lista.cpp
+	"Lista.h"
+
+1758408142 source:c:\users\vmvic\onedrive\desktop\cucei\tareas 4 semestre\plantillas\insertionsortangel\src\nodo.cpp
+	"Nodo.h"
+
