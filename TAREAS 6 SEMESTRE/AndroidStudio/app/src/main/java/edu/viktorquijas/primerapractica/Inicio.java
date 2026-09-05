@@ -10,7 +10,7 @@ public class Inicio extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_segunda_vista);
+        setContentView(R.layout.activity_inicio);
 
         Thread thread = new Thread(){
             @Override
