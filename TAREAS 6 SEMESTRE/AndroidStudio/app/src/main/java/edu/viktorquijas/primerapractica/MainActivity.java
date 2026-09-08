@@ -4,10 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    EditText et1;
+    TextView t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Button b1, b2, b3;
 
+
         b1 = (Button) findViewById(R.id.botonCreditos);
         b2 = (Button) findViewById(R.id.botonPerfil);
         b3 = (Button) findViewById(R.id.botonRefresh);
@@ -23,11 +29,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         b1.setOnClickListener(this);
         b2.setOnClickListener(this);
         b3.setOnClickListener(this);
+
+        et1 = (EditText) findViewById(R.id.editText1);
+        t = (TextView) findViewById(R.id.textView);
     }
 
     @Override
     public void onClick(View v){
         int id = v.getId();
+
+        String nombre = et1.getText().toString();
+        t.setText("Hola " + nombre);
 
         if (id == R.id.botonCreditos){
             Intent intent = new Intent(MainActivity.this, BotonCreditos.class);
