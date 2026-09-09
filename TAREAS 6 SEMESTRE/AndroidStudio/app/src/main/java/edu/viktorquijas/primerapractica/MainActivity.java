@@ -6,13 +6,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText et1;
-    TextView t;
+    EditText editText1;
+    TextView textView1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,16 +31,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         b2.setOnClickListener(this);
         b3.setOnClickListener(this);
 
-        et1 = (EditText) findViewById(R.id.editText1);
-        t = (TextView) findViewById(R.id.textView);
+        editText1 = (EditText) findViewById(R.id.editText1);
+        textView1 = (TextView) findViewById(R.id.textView);
     }
 
     @Override
     public void onClick(View v){
         int id = v.getId();
 
-        String nombre = et1.getText().toString();
-        t.setText("Hola " + nombre);
+
+
 
         if (id == R.id.botonCreditos){
             Intent intent = new Intent(MainActivity.this, BotonCreditos.class);
@@ -50,6 +51,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (id == R.id.botonRefresh){
             Intent intent = new Intent(MainActivity.this, Inicio.class);
             startActivity(intent);
+        } else if (id == R.id.botonIngresar){
+            String nombre = editText1.getText().toString();
+            textView1.setText("Hola " + nombre);
+
+            Toast.makeText(this,"Pícame ñya", Toast.LENGTH_SHORT).show();
         }
     }
 }
