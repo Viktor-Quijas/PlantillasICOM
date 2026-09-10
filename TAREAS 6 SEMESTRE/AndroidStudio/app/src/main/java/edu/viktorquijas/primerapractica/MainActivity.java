@@ -39,9 +39,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v){
         int id = v.getId();
 
-
-
-
         if (id == R.id.botonCreditos){
             Intent intent = new Intent(MainActivity.this, BotonCreditos.class);
             startActivity(intent);
