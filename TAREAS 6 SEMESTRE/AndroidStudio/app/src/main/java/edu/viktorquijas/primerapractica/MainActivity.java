@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(MainActivity.this, BotonPerfil.class);
             startActivity(intent);
         } else if (id == R.id.botonRefresh){
-            Intent intent = new Intent(MainActivity.this, Inicio.class);
+            Intent intent = new Intent(MainActivity.this, Opcion.class);
             startActivity(intent);
         } else if (id == R.id.botonIngresar){
             String nombre = editText1.getText().toString();
