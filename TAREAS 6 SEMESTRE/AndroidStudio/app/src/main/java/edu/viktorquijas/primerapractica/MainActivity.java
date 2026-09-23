@@ -40,10 +40,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = v.getId();
 
         if (id == R.id.botonCreditos){
-            Intent intent = new Intent(MainActivity.this, BotonCreditos.class);
+            Intent intent = new Intent(MainActivity.this, WebActivity.class);
             startActivity(intent);
         } else if (id == R.id.botonPerfil){
-            Intent intent = new Intent(MainActivity.this, BotonPerfil.class);
+            Intent intent = new Intent(MainActivity.this, VideoActivity.class);
             startActivity(intent);
         } else if (id == R.id.botonRefresh){
             Intent intent = new Intent(MainActivity.this, Opcion.class);
