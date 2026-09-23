@@ -1,0 +1,24 @@
+Llegué tarde w
+
+8:30 
+Minería de datos
+
+Entradas:
+
+	- Conceptos: Cualquier cosa que se va a aprender.
+		- Clasificación: Se clasifican los ejemplos de los cuales se quiere aprender algo en específico
+		- Asociación: Se asocian buscando cualquier característica en común
+		- Agrupamiento: 
+		- Regresión: Predecir un resultado  con base a uno que ya tengo
+	- Instancias: Conjunto de datos
+	- Atributos: datos por individual
+
+	-Ejemplo: Es un conjunto de instancias que se vna a asociar, clasificar o agrupar.
+	
+	-Problema de instancias múltiples
+	-Atributos: númericos, continuos, categóricas, etc..
+
+Preparación de entradas: (nosotros vamos a usar txt y csv). 
+
+Tarea: 4 o 5 desiciones y que vemos
+
