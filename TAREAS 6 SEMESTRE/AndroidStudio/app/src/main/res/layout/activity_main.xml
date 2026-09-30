@@ -36,7 +36,7 @@
         app:layout_constraintBottom_toTopOf="@+id/botonRefresh"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botonPerfil" />
+        app:layout_constraintTop_toBottomOf="@+id/listaBtn" />
 
     <Button
         android:id="@+id/botonRefresh"
@@ -51,14 +51,14 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/botonPerfil"
+        android:id="@+id/listaBtn"
         android:layout_width="115dp"
         android:layout_height="60dp"
         android:layout_marginStart="148dp"
         android:layout_marginTop="33dp"
         android:layout_marginEnd="148dp"
         android:layout_marginBottom="39dp"
-        android:text="video"
+        android:text="Lista"
         app:layout_constraintBottom_toTopOf="@+id/botonCreditos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         b1 = (Button) findViewById(R.id.botonCreditos);
-        b2 = (Button) findViewById(R.id.botonPerfil);
+        b2 = (Button) findViewById(R.id.listaBtn);
         b3 = (Button) findViewById(R.id.botonRefresh);
 
         b1.setOnClickListener(this);
@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (id == R.id.botonCreditos){
             Intent intent = new Intent(MainActivity.this, WebActivity.class);
             startActivity(intent);
-        } else if (id == R.id.botonPerfil){
-            Intent intent = new Intent(MainActivity.this, VideoActivity.class);
+        } else if (id == R.id.listaBtn){
+            Intent intent = new Intent(MainActivity.this, ListActivity.class);
             startActivity(intent);
         } else if (id == R.id.botonRefresh){
             Intent intent = new Intent(MainActivity.this, Opcion.class);
