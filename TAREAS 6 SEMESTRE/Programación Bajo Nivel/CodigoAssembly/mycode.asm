@@ -9,6 +9,7 @@
         .code                     ; Marca el inicio del segmento de código fuente ejecutable
         mov ax,@data              ; Carga en AX la dirección base donde se encuentra el segmento de datos
         mov ds,ax                 ; Mueve la dirección base desde AX hacia DS para inicializar el segmento de datos
+        mov al,arreglo1[3]
         
         ;Modos de direccionamiento
         
@@ -22,26 +23,26 @@
             
         ;Directo
         
-        mov 014h,ax               ; Intenta mover el valor de AX a la dirección de memoria 014h (Sintaxis no válida en x86 de 16-bits)
+        mov [014h],ax               ; Intenta mover el valor de AX a la direccion de memoria 014h 
         
         ;De registro indirecto
         
-        mov [bx],ax               ; Copia el contenido de AX a la dirección de memoria cuya dirección está guardada en BX
+        mov [bx],ax               ; Copia el contenido de AX a la direccion de memoria cuya direccion está guardada en BX
         
         ;De base mas indice
         
-        mov [bx+si],bp            ; Copia el contenido del registro BP a la dirección calculada sumando BX y SI
+        mov [bx+si],bp            ; Copia el contenido del registro BP a la direccion calculada sumando BX y SI
         
         ;De registro relativo
         
-        mov cl, [bx+4]            ; Carga en el registro CL el byte ubicado en la dirección desplazada BX + 4
+        mov cl, [bx+4]            ; Carga en el registro CL el byte ubicado en la direccion desplazada BX + 4
         
-        ;De base relativa más indice
+        ;De base relativa mas indice
         
-        mov arreglo1[bx+si],al    ; Copia el valor del registro AL en la dirección calculada por la base de arreglo1 + BX + SI
+        mov arreglo1[bx+si],al    ; Copia el valor del registro AL en la direccion calculada por la base de arreglo1 + BX + SI
         
         ;De indice escalado
         
-        mov [ebx+3*esi],al        ; Copia AL en la memoria usando direccionamiento de 32 bits (Escalado por 3, requiere modo 386)
+        mov [ebx+2*esi],ax        ; Intenta copiar AL en la memoria usando direccionamiento de 32 bits pero no se puede.
         
-        ret                       ; Retorna el control al programa principal o sistema operativo que invocó este proceso
+        ret                       ; Retorna el control al programa principal o sistema operativo que invoca este proceso
