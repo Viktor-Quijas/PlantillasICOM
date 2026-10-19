@@ -26,7 +26,3 @@ repite:	    	mov tmp,cx
 		loop repite
 
 end main
-
-
-
-
