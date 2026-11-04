@@ -25,11 +25,12 @@ from sklearn.metrics import silhouette_score
 # Configuración
 # --------------------------------------------------------------------------
 CSV_PATH = sys.argv[1] if len(sys.argv) > 1 else "iris.csv"
-K_ANIMACION = 3          # nº de centroides para la animación (Iris tiene 3 especies)
+K_ANIMACION = 4          # nº de centroides para la animación (Iris tiene 3 especies)
 K_MAX_CODO = 10          # máximo k para la gráfica de codo
 PAUSA = 0.6              # segundos entre iteraciones de la animación
 MAX_ITER = 100
 SEMILLA = 42
+ESTANDARIZAR = True      # True: z-score (media 0, desv. 1) antes de aplicar k-means
 
 # 6 pares distintos (incluye inversos: X,Y y luego Y,X)
 PARES = [
@@ -112,23 +113,30 @@ def kmeans_final(X, k, n_init=10, seed=SEMILLA):
 # --------------------------------------------------------------------------
 # Animación en tiempo real
 # --------------------------------------------------------------------------
-def animar_par(X, nombres, k, idx_par, total):
+def animar_par(X, Xe, nombres, k, idx_par, total):
     rng = np.random.default_rng(SEMILLA)
     fig, ax = plt.subplots(figsize=(7, 5.5))
     fig.canvas.manager.set_window_title(f"K-means - par {idx_par}/{total}")
 
+    # Para graficar en unidades originales, los centroides se des-estandarizan
+    mu, sd = X.mean(axis=0), X.std(axis=0)
+
+    def a_original(c):
+        return c * sd + mu if ESTANDARIZAR else c
+
     ultimo = None
-    for it, etiquetas, centros, inercia in kmeans_pasos(X, k, rng):
+    for it, etiquetas, centros, inercia in kmeans_pasos(Xe, k, rng):
         ax.clear()
+        centros_plot = a_original(centros)
         for j in range(k):
             m = etiquetas == j
             ax.scatter(X[m, 0], X[m, 1], s=35, color=COLORES[j], alpha=0.75,
                        label=f"Cluster {j + 1}")
-        ax.scatter(centros[:, 0], centros[:, 1], marker="X", s=260, c="black",
+        ax.scatter(centros_plot[:, 0], centros_plot[:, 1], marker="X", s=260, c="black",
                    edgecolors="white", linewidths=1.5, label="Centroides", zorder=5)
         ax.set_xlabel(nombres[0])
         ax.set_ylabel(nombres[1])
-        ax.set_title(f"Par {idx_par}/{total}: {nombres[0]} vs {nombres[1]}\n"
+        ax.set_title(f"{nombres[0]} vs {nombres[1]}\n"
                      f"Iteración {it} | Inercia = {inercia:.4f}")
         ax.legend(loc="best", fontsize=8)
         ax.grid(alpha=0.3)
@@ -137,8 +145,8 @@ def animar_par(X, nombres, k, idx_par, total):
         ultimo = (etiquetas, centros, inercia, it)
 
     etiquetas, centros, inercia, it = ultimo
-    sil = silhouette_score(X, etiquetas) if len(np.unique(etiquetas)) > 1 else float("nan")
-    ax.set_title(f"Par {idx_par}/{total}: {nombres[0]} vs {nombres[1]}\n"
+    sil = silhouette_score(Xe, etiquetas) if len(np.unique(etiquetas)) > 1 else float("nan")
+    ax.set_title(f"{nombres[0]} vs {nombres[1]}\n"
                  f"CONVERGIÓ en {it} iteraciones | Inercia = {inercia:.4f} | "
                  f"Silueta = {sil:.4f}")
     fig.canvas.draw_idle()
@@ -190,6 +198,7 @@ def grafica_codo(datos_pares):
 def main():
     df = pd.read_csv(CSV_PATH)
     plt.ion()
+    print(f"Estandarización (z-score): {'SÍ' if ESTANDARIZAR else 'NO'}")
 
     resultados = []
     datos_pares = []
@@ -197,9 +206,10 @@ def main():
 
     for i, (a, b) in enumerate(PARES, start=1):
         X = df[[a, b]].to_numpy(dtype=float)
-        datos_pares.append(((a, b), X))
+        Xe = (X - X.mean(axis=0)) / X.std(axis=0) if ESTANDARIZAR else X
+        datos_pares.append(((a, b), Xe))
 
-        fig, sil, inercia, it = animar_par(X, (a, b), K_ANIMACION, i, total)
+        fig, sil, inercia, it = animar_par(X, Xe, (a, b), K_ANIMACION, i, total)
         resultados.append((a, b, sil, inercia, it))
 
         print(f"\n--- Par {i}/{total}: {a} vs {b} (k = {K_ANIMACION}) ---")
@@ -212,7 +222,7 @@ def main():
         else:
             input("Presiona Enter para generar la gráfica de codo... ")
         plt.close(fig)
-
+        
     # Resumen en consola
     print("\n================ RESUMEN ================")
     print(f"{'Par':<32}{'Silueta':>10}{'Inercia':>12}{'Iter':>6}")
